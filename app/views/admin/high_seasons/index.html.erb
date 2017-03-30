@@ -1,0 +1,18 @@
+<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="categories-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Data de Início</th>
+      <th>Data de Término</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @high_seasons.each do |high_season| %>
+      <tr>
+        <td width="40%"><%= t high_season.name %></td>
+        <td width="30%"><%= l(high_season.start_date, format: :short) %></td>
+        <td width="30%"><%= l(high_season.end_date, format: :short) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+<br/>
+<% @tours.each do |tour| %>
+  <%= link_to tour.name, tour_path %> - <%= tour.attraction %> <br/>
+<% end %>
+<br/>
+<a href="javascript:history.back()" class="btn btn-default" role="button">Voltar</a>

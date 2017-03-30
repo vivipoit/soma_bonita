@@ -1,0 +1,11 @@
+<%= flash[:error]%>
+<%= simple_form_for([:admin, @price]) do |f|%>
+  <%= f.association :tour %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.input :adult_price %>
+  <%= f.input :child_price %>
+  <%= f.input :baby_price %>
+  <%= f.input :season_type, as: :radio_buttons, collection: @season_types %>
+  <%= f.submit txt_submit, class: "btn btn-primary" %>
+<% end %>

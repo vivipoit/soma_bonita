@@ -1,0 +1,79 @@
+<div class="panel panel-default" id="prices_within_period" style="margin-top:20%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <div class="panel-heading">
+    <h3 class="panel-title">Veja os preços dos passeios no período da SUA viagem!</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag(home_filter_period_path, method: :get) do %>
+
+      <div class="row">
+        <div class="col col-lg-6">
+          <%= label_tag :filter_from, 'Desde:' %>
+          <%= text_field_tag :filter_from, @start_date, :class => "form-control datepicker", :placeholder => "Desde", :data => { :'date-format' => "DD/MM/YYYY" } %>
+        </div>
+        <div class="col col-lg-6">
+          <%= label_tag :filter_to, 'Até:' %>
+          <%= text_field_tag :filter_to, @end_date, :class => "form-control datepicker", :placeholder => "Até", :data => { :'date-format' => "DD/MM/YYYY" } %>
+        </div>
+      </div>
+
+      <br/>
+
+      <%= submit_tag "Ver Preços", { class: "btn btn-primary"} %>
+
+    <% end %>
+
+    <% unless @tours.nil? || @date_range.nil? %>
+
+    <h2><%= "Preços para o período entre #{l @start_date, format: :default} e #{l @end_date, format: :default}" %></h2>
+
+    <table id="prices_within_period" class="table table-striped">
+      <colgroup>
+        <col id="name">
+          <% @col_span = 1 %>
+          <% @date_range.each do |date| %>
+          <% @col_span += 1 %>
+          <col id="<%= date %>">
+          <% end %>
+      </colgroup>
+      <tr>
+        <th style="width:25%">Nome do Passeio</th>
+        <% @date_range.each do |date| %>
+          <th style="text-align:right">
+            <%= l date, format: :default %><br/>
+            <%= l date, format: :week %><br/>
+          </th>
+        <% end %>
+      </tr>
+
+      <% @tours.each do |tour| %>
+        <tr>
+          <td colspan="<%= @col_span %>">
+            <strong><%= tour.name %></strong><br/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Temporada:</strong><br/>
+            Adulto:<br/>
+            Criança:<br/>
+            Bebê:
+          </td>
+          <% @date_range.each do |date| %>
+          <td style="text-align:right;">
+            <% manager = TourPriceManager.new(tour,date) %>
+            <% this_price = manager.tour_price_with_season %>
+            <strong><%= t this_price.season_type %></strong><br/>
+            <% this_price = manager.tour_price_with_season %>
+            <%= number_to_currency this_price.adult_price %><br/>
+            <%= number_to_currency this_price.child_price %><br/>
+            <%= number_to_currency this_price.baby_price %>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+
+    </table>
+
+    <% end %>
+  </div>
+</div>

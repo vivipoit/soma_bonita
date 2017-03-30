@@ -1,0 +1,43 @@
+<h1><%= @tour.name %></h1>
+<br/>
+<br/>
+<div class="row">
+  <div class="col col-lg-3">
+    <strong>Categoria:</strong>
+    <br/>
+    <%= @tour.category.name %>
+  </div>
+  <div class="col col-lg-3">
+    <strong>Atrativo:</strong>
+    <br/>
+    <%= @tour.attraction %>
+  </div>
+  <div class="col col-lg-3">
+    <strong>Duração:</strong>
+    <br/>
+    <%= @tour.duration %> minutos
+  </div>
+  <div class="col col-lg-3">
+    <strong>Distância:</strong>
+    <br/>
+    <%= @tour.distance %> km
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col col-lg-3">
+    <strong>Site:</strong>
+    <br/>
+    <%= @tour.site %>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col col-lg-12">
+    <strong>Descrição:</strong><br/>
+    <%= @tour.description %><br/>
+  </div>
+</div>
+<br/>
+<br/>
+<a href="javascript:history.back()" class="btn btn-default" role="button">Voltar</a>

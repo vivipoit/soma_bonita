@@ -1,0 +1,13 @@
+<% unless flash.empty? %>
+  <div class="alert alert-warning" role="alert"><%= flash[:error] %></div>
+<% end %>
+<%= simple_form_for([:admin, @tour]) do |f| %>
+  <%= f.input :name, label: 'Nome' %>
+  <%= f.input :description, label: 'Descrição' %>
+  <%= f.association :category, label: 'Categoria' %>
+  <%= f.input :attraction, label: 'Atrativo' %>
+  <%= f.input :duration, label: 'Duração' %>
+  <%= f.input :distance, label: 'Distância' %>
+  <%= f.input :site, label: 'Site' %>
+  <%= f.submit txt_submit, class: "btn btn-primary" %>
+<% end %>

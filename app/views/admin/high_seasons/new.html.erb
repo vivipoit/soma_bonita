@@ -1,0 +1,9 @@
+<% unless flash.empty? %>
+  <div class="alert alert-warning" role="alert"><%= flash[:error] %></div>
+<% end %>
+<%= simple_form_for([:admin, @high_season]) do |f| %>
+  <%= f.input :name, label: "Nome" %>
+  <%= f.input :start_date, label: "Início", as: :date%>
+  <%= f.input :end_date, label: "Fim", as: :date%>
+  <%= f.submit 'Salvar', class: "btn btn-primary" %>
+<% end %>
