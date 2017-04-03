@@ -7,7 +7,6 @@ pt-BR:
     attributes:
       category:
         name: Nome
-
       user:
         password: Senha
       price:
@@ -20,6 +19,13 @@ pt-BR:
         child_price: Preço por Criança
         baby_price: Preço por Bebê
         season_type: Temporada
+      transfer:
+        name: Nome
+        tour: Passeio
+        seat_type: Tipo
+        particular: Particular
+        shared: Compartilhado
+
 
   date:
     formats:

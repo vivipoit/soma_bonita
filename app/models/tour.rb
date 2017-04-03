@@ -5,5 +5,6 @@ class Tour < ApplicationRecord
   belongs_to :category
 
   has_many :prices
+  has_many :transfers
 
 end

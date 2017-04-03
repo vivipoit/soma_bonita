@@ -1,0 +1,18 @@
+<h1><%= @transfer.name %></h1>
+<br/>
+<br/>
+<div class="row">
+  <div class="col col-lg-3">
+    <strong>Tipo:</strong>
+    <br/>
+    <%= @transfer.seat_type %>
+  </div>
+  <div class="col col-lg-3">
+    <strong>Passeio:</strong>
+    <br/>
+    <%= @transfer.tour.name %>
+  </div>
+  
+<br/>
+<br/>
+<a href="javascript:history.back()" class="btn btn-default" role="button">Voltar</a>
