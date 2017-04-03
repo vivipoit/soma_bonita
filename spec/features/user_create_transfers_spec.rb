@@ -13,7 +13,6 @@ feature 'User create transfers' do
 
     fill_in 'Nome', with: transfer.name
     choose human_transfer
-
     select transfer.tour.name, from: 'Passeio'
 
     click_on 'Criar Transporte'

@@ -15,6 +15,22 @@ class Admin::TransfersController < Admin::BaseController
     end
   end
 
+  def edit
+    @seat_types = seat_types
+    @transfer = Transfer.find(params[:id])
+  end
+
+  def update
+    @transfer = Transfer.find(params[:id])
+    if @transfer.update(transfer_params)
+      redirect_to ([:admin, @transfer])
+    else
+      @seat_types = seat_types
+      flash[:error] = 'Não foi possível atualizar o transporte'
+      render :edit
+    end
+  end
+
   def show
     @transfer = TransferPresenter.new(Transfer.find(params[:id]))
   end

@@ -1,0 +1,9 @@
+<% unless flash.empty? %>
+  <div class="alert alert-warning" role="alert"><%= flash[:error] %></div>
+<% end %>
+<%= simple_form_for ([:admin, @transfer]) do |f| %>
+  <%= f.input :name %>
+  <%= f.association :tour %>
+  <%= f.input :seat_type, as: :radio_buttons, collection: @seat_types %>
+  <%= f.submit txt_submit, class: "btn btn-primary" %>
+<% end %>

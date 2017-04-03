@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     resources :tours, only:[:index, :new, :create, :edit, :update, :destroy, :show]
     resources :high_seasons, only: [:index, :new, :create, :show]
     resources :prices, only: [:index, :new, :create, :show, :edit, :update]
-    resources :transfers, only: [:new, :create, :show]
+    resources :transfers, only: [:new, :create, :show, :edit, :update]
   end
 end
