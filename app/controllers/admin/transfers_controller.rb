@@ -1,4 +1,10 @@
 class Admin::TransfersController < Admin::BaseController
+
+  def index
+    @transfers = Transfer.all.map{|transfer| TransferPresenter.new(transfer)}
+    flash[:notice] = 'Nenhum Transporte Cadastrado' unless @transfers.present?
+  end
+
   def new
     @transfer = Transfer.new
     @seat_types = seat_types
