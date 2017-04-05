@@ -1,5 +1,7 @@
 class Admin::TransfersController < Admin::BaseController
 
+  before_action :set_transfer, only: [:edit, :update, :destroy]
+
   def index
     @transfers = Transfer.all.map{|transfer| TransferPresenter.new(transfer)}
     flash[:notice] = 'Nenhum Transporte Cadastrado' unless @transfers.present?
@@ -23,11 +25,9 @@ class Admin::TransfersController < Admin::BaseController
 
   def edit
     @seat_types = seat_types
-    @transfer = Transfer.find(params[:id])
   end
 
   def update
-    @transfer = Transfer.find(params[:id])
     if @transfer.update(transfer_params)
       redirect_to ([:admin, @transfer])
     else
@@ -41,10 +41,19 @@ class Admin::TransfersController < Admin::BaseController
     @transfer = TransferPresenter.new(Transfer.find(params[:id]))
   end
 
+  def destroy
+    @transfer.destroy
+    redirect_to admin_transfers_url
+  end
+
   private
 
   def transfer_params
     params.require(:transfer).permit(:name, :tour_id, :seat_type)
+  end
+
+  def set_transfer
+    @transfer = Transfer.find(params[:id])
   end
 
   def seat_types

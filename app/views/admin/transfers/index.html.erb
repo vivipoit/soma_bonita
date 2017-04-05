@@ -22,6 +22,9 @@
                     <%= link_to edit_admin_transfer_path(transfer) do %>
                       <i class="fa fa-edit fa-fw"></i>
                     <% end %>
+                    <%= link_to admin_transfer_path(transfer), method: :delete, data: {confirm: 'Deseja deletar esse transporte?'} do %>
+                      <i class="fa fa-close fa-fw"></i>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>
