@@ -14,6 +14,17 @@
           <%= label_tag :filter_to, 'Até:' %>
           <%= text_field_tag :filter_to, @end_date, :class => "form-control datepicker", :placeholder => "Até", :data => { :'date-format' => "DD/MM/YYYY" } %>
         </div>
+        <div class="col-lg-12">
+          <h2>Escolha o passeio:</h2>
+        </div>
+        <div class="col col-lg-12">
+          <% @interest_tours.each do |tour| %>
+            <div class="col-lg-6">
+              <%= label_tag "tour_ids_#{tour.id}", tour.name %>
+              <%= check_box_tag "tour_ids[]", tour.id, nil, id: "tour_ids_#{tour.id}" %>
+            </div>
+          <% end %>
+        </div>
       </div>
 
       <br/>
