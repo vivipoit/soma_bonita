@@ -4,6 +4,7 @@ pt-BR:
       category: Categoria
       user: Usuário
       price: Preço
+      tour: Passeio
     attributes:
       category:
         name: Nome
@@ -19,6 +20,8 @@ pt-BR:
         child_price: Preço por Criança
         baby_price: Preço por Bebê
         season_type: Temporada
+      tour:
+        minimun_age: Idade Mínima
       transfer:
         name: Nome
         tour: Passeio

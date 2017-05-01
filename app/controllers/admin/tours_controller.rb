@@ -38,12 +38,13 @@ module Admin
         render :edit
       end
     end
-    
+
     private
     def tour_params
-      params.require(:tour).permit(:name, :description, :category_id, :attraction,
-                                    :duration, :adult_price, :child_price, :baby_price,
-                                    :distance,:site)
+      params.require(:tour).permit(:name, :description, :category_id,
+                                   :attraction, :duration, :adult_price,
+                                   :child_price, :baby_price, :distance, :site,
+                                   :minimum_age)
     end
   end
 end

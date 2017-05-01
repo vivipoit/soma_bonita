@@ -13,5 +13,5 @@ RSpec.describe Category, :type => :model do
     another_category.save
     expect(another_category).not_to be_valid
   end
-  
+
 end

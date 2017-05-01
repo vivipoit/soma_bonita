@@ -6,6 +6,7 @@
   <%= f.input :description, label: 'Descrição' %>
   <%= f.association :category, label: 'Categoria' %>
   <%= f.input :attraction, label: 'Atrativo' %>
+  <%= f.input :minimum_age, collection: 0..18, prompt: "Selecione a Idade Mínima", selected: 0, label: 'Idade Miníma'%>
   <%= f.input :duration, label: 'Duração' %>
   <%= f.input :distance, label: 'Distância' %>
   <%= f.input :site, label: 'Site' %>

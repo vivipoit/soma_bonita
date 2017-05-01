@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin creates tour' do
   scenario 'successfully' do
     user = login
-    tour = build(:tour)
+    tour = build(:tour, minimum_age: 10)
 
     visit dashboard_path
     click_on 'Novo Passeio'
@@ -15,12 +15,14 @@ feature 'Admin creates tour' do
     fill_in 'Duração', with: tour.duration
     fill_in 'Distância', with: tour.distance
     fill_in 'Site', with: tour.site
+    select '10', from: 'Idade Miníma'
 
     click_on 'Salvar Passeio'
 
 
     expect(page).to have_current_path(admin_tour_path(1))
     expect(page).to have_css('h1', text: tour.name)
+    expect(page).to have_content "#{tour.minimum_age} anos"
     expect(page).to have_content tour.description
     expect(page).to have_content tour.category.name
     expect(page).to have_content tour.attraction

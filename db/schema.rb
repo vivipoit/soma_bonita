@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402235827) do
+ActiveRecord::Schema.define(version: 20170501222628) do
 
   create_table "budgets", force: :cascade do |t|
     t.datetime "start_date"
@@ -56,10 +56,11 @@ ActiveRecord::Schema.define(version: 20170402235827) do
     t.string   "attraction"
     t.integer  "duration"
     t.decimal  "distance"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "category_id"
     t.string   "site"
+    t.integer  "minimum_age", default: 0
     t.index ["category_id"], name: "index_tours_on_category_id"
   end
 

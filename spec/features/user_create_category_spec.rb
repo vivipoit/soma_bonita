@@ -9,14 +9,14 @@ feature 'User create category' do
   scenario 'successfully' do
     category = build(:category, name: 'Aventura')
 
-    visit new_admin_category_path
+   visit new_admin_category_path
 
     fill_in 'Nome', with: category.name
 
     click_on 'Criar Categoria'
 
     expect(page).to have_current_path(admin_categories_path)
-    expect(page).to have_content('Aventura')
+    expect(page).to have_content('Aventura teste')
   end
 
   scenario 'and fills nothing' do
